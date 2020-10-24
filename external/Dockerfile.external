@@ -1,0 +1,17 @@
+ARG  VCW_TAG=3.19.0
+FROM streamsets/datacollector-libs:streamsets-datacollector-elasticsearch_5-lib-${VCW_TAG}-latest AS elastic
+FROM streamsets/datacollector-libs:streamsets-datacollector-apache-kafka_2_0-lib-${VCW_TAG}-latest AS kafka
+FROM streamsets/datacollector:${VCW_TAG}-latest
+
+COPY --from=elastic /opt/streamsets-datacollector-3.19.0/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib /opt/streamsets-datacollector-3.19.0-latest/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib
+COPY --from=kafka /opt/streamsets-datacollector-3.19.0/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib /opt/streamsets-datacollector-3.19.0-latest/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib
+
+LABEL co.vcweb.schema-version="1.0" \
+      co.vcweb.label="vcwc/streamsets/external - External Build" \
+      co.vcweb.description="The Official Streamsets Datacollector image with elasticsearch and kafka libraries installed." \
+      co.vcweb.realm="vcwc" \
+      co.vcweb.library="streamsets" \
+      co.vcweb.image="external" \
+      co.vcweb.flavor="" \
+      co.vcweb.tag="${VCW_TAG}" \
+      co.vcweb.maintainer="vcw@vcweb.co"
