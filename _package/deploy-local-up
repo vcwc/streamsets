@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+
+prefix="package_streamsets_$2"
+
+if [[ "package_streamsets_streamsets_streamsets_volume" == "$prefix"* ]] ; then
+	executionplane --silent docker volume create package_streamsets_streamsets_streamsets_volume
+	fi
+	
