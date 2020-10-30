@@ -6,8 +6,8 @@ export VCW_STACK_GLOBAL_PACKAGE_TAG="3.18.1"
 export VCW_STACK_GLOBAL_STACKNAMES="vcw_stack_streamsets,vcw_stack_streamsets_ui_streamsets"
 export VCW_STACK_GLOBAL_BOOTSTACKS="vcw_stack_streamsets"
 export VCW_STACK_GLOBAL_RUNSTACKS="vcw_stack_streamsets_ui_streamsets"
-export VCW_STACK_GLOBAL_VOLUME_LIST="${VCW_STACK_STACKPREFIX}_streamsets_volume,${VCW_STACK_STACKPREFIX}_nginx_config_volume"
-export VCW_STACK_GLOBAL_VOLUME_INITIALISED="${VCW_STACK_STACKPREFIX}_streamsets_volume:/data,${VCW_STACK_STACKPREFIX}_nginx_config_volume:/vcw/pwd"
+export VCW_STACK_GLOBAL_VOLUME_LIST="${VCW_STACK_GLOBAL_STACKPREFIX}_streamsets_volume,${VCW_STACK_GLOBAL_STACKPREFIX}_nginx_config_volume"
+export VCW_STACK_GLOBAL_VOLUME_INITIALISED="${VCW_STACK_GLOBAL_STACKPREFIX}_streamsets_volume:/data,${VCW_STACK_GLOBAL_STACKPREFIX}_nginx_config_volume:/vcw/pwd"
 # END CONFIGURATION
 
 # START MODULE SETTINGS

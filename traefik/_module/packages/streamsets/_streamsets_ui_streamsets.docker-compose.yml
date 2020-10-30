@@ -5,11 +5,11 @@ services:
 # START SERVICE vcwc/nginx/rewrite
   nginx:
     image: ${VCW_REGISTRY}vcwc/nginx.base:1.19.3
-    environment: ['VCW_STACK_NGINX_CONF_LOCATION=/${VCW_STACK_URLPREFIX}/streamsets', 'VCW_STACK_NGINX_CONF_PROXY_PASS=${VCW_STACK_STACKPREFIX}_streamsets:18630']
+    environment: ['VCW_STACK_NGINX_CONF_LOCATION=/${VCW_STACK_GLOBAL_URLPREFIX}/streamsets', 'VCW_STACK_NGINX_CONF_PROXY_PASS=${VCW_STACK_GLOBAL_STACKPREFIX}_streamsets:18630']
     command: []
-    volumes: ['${VCW_STACK_STACKPREFIX}_nginx_config_volume:/vcw/pwd']
+    volumes: ['${VCW_STACK_GLOBAL_STACKPREFIX}_nginx_config_volume:/vcw/pwd']
     ports: []
-    networks: [${VCW_STACK_NETWORKGLOBAL}_overlay, ${VCW_STACK_NETWORKLOCAL}_overlay]
+    networks: [${VCW_STACK_GLOBAL_NETWORKGLOBAL}_overlay, ${VCW_STACK_GLOBAL_NETWORKLOCAL}_overlay]
     deploy:
       mode: replicated
       resources:
@@ -18,13 +18,13 @@ services:
         reservations:
           memory: '${STREAMSETS_UI_STREAMSETS_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
 
-      labels: [traefik.enable=true,traefik.docker.network=${VCW_STACK_NETWORKGLOBAL}_overlay,
-      traefik.http.services.${VCW_STACK_STACKPREFIX}_nginx.loadbalancer.server.port=80,
-      traefik.http.routers.${VCW_STACK_STACKPREFIX}_nginx.entrypoints=conteco,
-      traefik.http.routers.${VCW_STACK_STACKPREFIX}_nginx.rule=PathPrefix("/${VCW_STACK_URLPREFIX}/streamsets")]
+      labels: [traefik.enable=true,traefik.docker.network=${VCW_STACK_GLOBAL_NETWORKGLOBAL}_overlay,
+      traefik.http.services.${VCW_STACK_GLOBAL_STACKPREFIX}_nginx.loadbalancer.server.port=80,
+      traefik.http.routers.${VCW_STACK_GLOBAL_STACKPREFIX}_nginx.entrypoints=conteco,
+      traefik.http.routers.${VCW_STACK_GLOBAL_STACKPREFIX}_nginx.rule=PathPrefix("/${VCW_STACK_GLOBAL_URLPREFIX}/streamsets")]
 ${STREAMSETS_UI_STREAMSETS_COMPOSE_EXTENSIONS}
 # END SERVICE vcwc/nginx/rewrite
 
-networks: {${VCW_STACK_NETWORKGLOBAL}_overlay: { external: true }, ${VCW_STACK_NETWORKLOCAL}_overlay: { external: true }}
-volumes: {${VCW_STACK_STACKPREFIX}_nginx_config_volume: { external: true }}
+networks: {${VCW_STACK_GLOBAL_NETWORKGLOBAL}_overlay: { external: true }, ${VCW_STACK_GLOBAL_NETWORKLOCAL}_overlay: { external: true }}
+volumes: {${VCW_STACK_GLOBAL_STACKPREFIX}_nginx_config_volume: { external: true }}
 ${VCW_STACK_GLOBAL_COMPOSE_EXTENSIONS}
