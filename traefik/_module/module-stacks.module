@@ -1,3 +1,2 @@
-boot/shutdown,streamsets,streamsets,streamsets
-start/stop,streamsets,streamsets,streamsets_ui_streamsets
-
+boot/shutdown,streamsets,streamsets
+start/stop,streamsets,streamsets_ui_streamsets
