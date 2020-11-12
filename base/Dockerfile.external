@@ -1,7 +1,7 @@
 ARG  VCW_TAG=3.18.1
 FROM streamsets/datacollector-libs:streamsets-datacollector-elasticsearch_5-lib-${VCW_TAG} AS elastic
 FROM streamsets/datacollector-libs:streamsets-datacollector-apache-kafka_2_0-lib-${VCW_TAG} AS kafka
-FROM streamsets/datacollector:${VCW_TAG}-latest
+FROM streamsets/datacollector:${VCW_TAG}
 
 COPY --from=elastic /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib
 COPY --from=kafka /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib
