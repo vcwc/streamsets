@@ -1,10 +1,10 @@
-ARG  VCW_TAG=3.18.1
+ARG  VCW_TAG=3.16.0
 FROM streamsets/datacollector-libs:streamsets-datacollector-elasticsearch_5-lib-${VCW_TAG} AS elastic
 FROM streamsets/datacollector-libs:streamsets-datacollector-apache-kafka_2_0-lib-${VCW_TAG} AS kafka
 FROM streamsets/datacollector:${VCW_TAG}
 
-COPY --from=elastic /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib
-COPY --from=kafka /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib /opt/streamsets-datacollector-3.18.1/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib
+COPY --from=elastic /opt/streamsets-datacollector-3.16.0/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib /opt/streamsets-datacollector-3.16.0/streamsets-libs/streamsets-datacollector-elasticsearch_5-lib
+COPY --from=kafka /opt/streamsets-datacollector-3.16.0/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib /opt/streamsets-datacollector-3.16.0/streamsets-libs/streamsets-datacollector-apache-kafka_2_0-lib
 
 LABEL co.vcweb.schema-version="1.0" \
       co.vcweb.label="vcwc/streamsets/external - External Build" \
@@ -13,5 +13,5 @@ LABEL co.vcweb.schema-version="1.0" \
       co.vcweb.library="streamsets" \
       co.vcweb.image="external" \
       co.vcweb.flavor="" \
-      co.vcweb.tag="${VCW_TAG}" \
+      co.vcweb.tag="3.16.0" \
       co.vcweb.maintainer="vcw@vcweb.co"

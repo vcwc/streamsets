@@ -4,7 +4,7 @@ services:
 
 # START SERVICE vcwc/streamsets
   streamsets:
-    image: ${VCW_REGISTRY}vcwc/streamsets.base:3.18.1
+    image: ${VCW_REGISTRY}vcwc/streamsets.base:3.16.0
     environment: ['SDC_JAVA_OPTS=-Xmx${VCW_STACK_STREAMSETS_DEPLOY_RESOURCES_RESERVATIONS_MEMORY} -Xms${VCW_STACK_STREAMSETS_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}', 'SDC_CONF_HTTP_BINDHOST=0.0.0.0', 'SDC_CONF_HTTP_ENABLE_FORWARDED_REQUESTS=true', 'SDC_CONF_HTTP_AUTHENTICATION=none', 'SDC_CONF_BUNDLE_UPLOAD_ENABLED=false']
     command: []
     volumes: ['${VCW_STACK_GLOBAL_STACKPREFIX}_streamsets_volume:/data']

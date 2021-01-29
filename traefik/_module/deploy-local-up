@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
 
-prefix="vcwc_streamsets_traefik__$1"
-prefix="vcwc_streamsets_traefik__$1"
+prefix="vcw_module_vcwc_streamsets_traefik__$1"
+prefix="vcw_module_vcwc_streamsets_traefik__$1"
 
-if [[ "vcwc_streamsets_traefik__streamsets_streamsets_volume" == "$prefix"* ]] ; then
-	executionplane --silent docker volume create vcwc_streamsets_traefik__streamsets_streamsets_volume
+if [[ "vcw_module_vcwc_streamsets_traefik__streamsets_streamsets_volume" == "$prefix"* ]] ; then
+	executionplane --silent docker volume create vcw_module_vcwc_streamsets_traefik__streamsets_streamsets_volume
 fi
 
-if [[ "vcwc_streamsets_traefik__streamsets_nginx_config_volume" == "$prefix"* ]] ; then
-	executionplane --silent docker volume create vcwc_streamsets_traefik__streamsets_nginx_config_volume
-fi
-
-if [[ "vcwc_streamsets_traefik__streamsets_streamsets_volume" == "$prefix"* ]] ; then
-	executionplane --silent docker run -v vcw_controlplane_repos:/source -v vcwc_streamsets_traefik__streamsets_streamsets_volume:/data ${VCW_REGISTRY}vcwc/controlplane.vcw console cmd tar -C / -xvf /source/vcwc/streamsets/traefik/_module/volumes/streamsets_streamsets_volume.tar
-fi
-
-if [[ "vcwc_streamsets_traefik__streamsets_nginx_config_volume" == "$prefix"* ]] ; then
-	executionplane --silent docker run -v vcw_controlplane_repos:/source -v vcwc_streamsets_traefik__streamsets_nginx_config_volume:/vcw/pwd ${VCW_REGISTRY}vcwc/controlplane.vcw console cmd cp -r /source/vcwc/streamsets/traefik/_module/volumes/streamsets_nginx_config_volume/* /vcw/pwd
+if [[ "vcw_module_vcwc_streamsets_traefik__streamsets_streamsets_volume" == "$prefix"* ]] ; then
+	executionplane --silent docker run -v vcw_controlplane_repos:/source -v vcw_module_vcwc_streamsets_traefik__streamsets_streamsets_volume:/data ${VCW_REGISTRY}vcwc/controlplane.vcw console untar /source/vcwc/streamsets/traefik/_module/volumes/streamsets_streamsets_volume.tar
 fi
